@@ -1,0 +1,14 @@
+- name: Install required packages
+  apt: name={{item}} state=latest update_cache=yes
+  become: yes
+  with_items:
+    - gcc
+    - vim
+    - virtualenv
+    - python3.6-dev
+    - libpq-dev
+    - python3-psycopg2
+    - uwsgi-plugin-python3
+
+- name: Ensure a locale exists
+  locale_gen: name=en_US.UTF-8 state=present

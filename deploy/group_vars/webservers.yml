@@ -1,0 +1,11 @@
+app_name: x-wiki
+linux_user: x-wiki
+linux_user_group: x-wiki-users
+
+https: False
+
+# Pathes
+app_dir: "/home/{{ linux_user }}/{{ app_name }}"
+
+# Git configurations
+git_repo: git@github.com:Solastis/solastis.git

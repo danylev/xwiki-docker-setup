@@ -1,0 +1,10 @@
+#---
+#- name: Set up uwsgi
+#  apt: name=uwsgi state=latest
+#  become: yes
+- name: install uwsgi
+  pip: name=uwsgi
+       virtualenv={{ venv_dir }}
+       virtualenv_python=python3.6
+  become_user: "{{ linux_user }}"
+  become: yes

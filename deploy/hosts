@@ -1,0 +1,10 @@
+all:
+  hosts:
+    development:
+      ansible_host: 88.99.87.109
+      ansible_user: root
+      ansible_python_interpreter: /usr/bin/python3
+      gather_facts: yes
+webservers:
+  hosts:
+    development:
