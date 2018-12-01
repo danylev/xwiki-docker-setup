@@ -1,0 +1,33 @@
+---
+- name: Install supervisor
+  apt: name=supervisor state=latest
+  become: yes
+
+- name: create supervisord config folder
+  action: file dest=/etc/supervisor state=directory owner=root
+
+#- name: create supervisord config
+#  action: template src=templates/supervisord.conf dest=/etc/supervisord.conf
+
+#- name: start supervisord service and have it run during system startup
+#  action: service name=supervisord state=started enabled=yes
+#  become: yes
+
+- name: setup uwsgi in supervisor
+  template: "src=supervisor-solastis.j2 dest=/etc/supervisor/conf.d/solastis-runner.conf"
+  become: yes
+
+- name: setup project uwsgi configuration file
+  template: "src=uwsgi.j2 dest={{ app_dir }}/solastis_uwsgi.ini"
+
+- name: update supervisorctl
+  supervisorctl: name=uwsgi-runner state=restarted
+  become: yes
+
+- name: update supervisorctl celery-runner
+  supervisorctl: name=celery-runner state=restarted
+  become: yes
+
+- name: update supervisorctl celery-beat-runner
+  supervisorctl: name=celery-beat-runner state=restarted
+  become: yes
