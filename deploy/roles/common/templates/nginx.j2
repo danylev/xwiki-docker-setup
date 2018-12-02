@@ -1,0 +1,15 @@
+ server {
+     listen 80;
+     server_name 88.99.87.109, www.88.99.87.109;
+     location / {
+        proxy_pass http://localhost:8000;
+     }
+ }
+
+server {
+     listen 81;
+     server_name 88.99.87.109:81, www.88.99.87.109:81;
+     location / {
+        proxy_pass http://localhost:8080;
+     }
+ }

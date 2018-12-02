@@ -1,3 +1,5 @@
 ---
 - include_tasks: transfer_ssh_key.yml
 - include_tasks: git.yml
+- include_tasks: docker_setup.yml
+- include_tasks: nginx.yml
