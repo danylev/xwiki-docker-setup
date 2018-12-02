@@ -1,0 +1,13 @@
+ server {
+     listen 80;
+     server_name ~^www.(?<domain>.*)$;
+     proxy_pass localhost:8000
+     return 301 $scheme://${domain}$request_uri;
+ }
+
+server {
+     listen 81;
+     server_name ~^www.(?<domain>.*)$;
+     proxy_pass localhost:8080
+     return 301 $scheme://${domain}$request_uri;
+ }

@@ -8,4 +8,4 @@ https: False
 app_dir: "/home/{{ linux_user }}/{{ app_name }}"
 
 # Git configurations
-git_repo: git@github.com:Solastis/solastis.git
+git_repo: git@github.com:danylev/xwiki-docker-setup.git
